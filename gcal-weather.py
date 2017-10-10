@@ -279,12 +279,14 @@ class SmDisplay:
         # Time & Date
         th = self.tmdateTh
         sh = self.tmdateSmTh
-        font = pygame.font.SysFont( fn, int(ymax*th), bold=1 )    # Regular Font
-        sfont = pygame.font.SysFont( fn, int(ymax*sh), bold=1 )    # Small Font for Seconds
+        dh = self.tmdateDtTh
+        font = pygame.font.SysFont( fn, int(ymax*th), bold=0 )      # Regular Font
+        sfont = pygame.font.SysFont( fn, int(ymax*sh), bold=0 )     # Small Font for Seconds
+        dfont = pygame.font.SysFont( fn, int(ymax*dh), bold=0 )     # Date Font 
 
-        tm1 = time.strftime( "%a, %b %d   %H:%M", time.localtime() ).decode('utf-8').title()    # 1st part
-        tm2 = time.strftime( "%S", time.localtime() )                    # 2nd
-        tm3 = "" #time.strftime( " %P", time.localtime() )                    # 
+        tm1 = time.strftime( "%H:%M", time.localtime() )                    # 1st part: Time HH:MM
+        tm2 = time.strftime( "%S", time.localtime() )                       # 2nd part: ss seconds
+        tm3 = time.strftime( "%A, %d %B", time.localtime() ).decode('utf-8').title()   # Below Full Date
 
         rtm1 = font.render( tm1, True, lc )
         (tx1,ty1) = rtm1.get_size()
@@ -293,10 +295,11 @@ class SmDisplay:
         rtm3 = font.render( tm3, True, lc )
         (tx3,ty3) = rtm3.get_size()
 
-        tp = xmax / 2 - (tx1 + tx2 + tx3) / 2
+        tp = xmax*wx / 2 - (tx1 + tx2 ) / 2
         self.screen.blit( rtm1, (tp,self.tmdateYPos) )
         self.screen.blit( rtm2, (tp+tx1+3,self.tmdateYPosSm) )
-        self.screen.blit( rtm3, (tp+tx1+tx2,self.tmdateYPos) )
+        tp = xmax*wx / 2 - tx3 / 2
+        self.screen.blit( rtm3, (tp,ty1-15) )
 
         # Outside Temp
         font = pygame.font.SysFont( fn, int(ymax*(0.5-0.15)*0.9), bold=1 )
