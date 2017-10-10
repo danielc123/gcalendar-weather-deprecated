@@ -50,6 +50,11 @@ import string
 from icon_defs import *
 from X10 import *
 
+## dependencies added
+import locale
+from strings_defs import *      #strings file to store other languages strings
+
+
 # Setup GPIO pin BCM GPIO04
 # import RPi.GPIO as GPIO
 # GPIO.setmode( GPIO.BCM )
