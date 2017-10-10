@@ -576,21 +576,21 @@ class SmDisplay:
         self.screen.blit( rtm2, (tp+tx1+3,self.tmdateYPosSm) )
         self.screen.blit( rtm3, (tp+tx1+tx2,self.tmdateYPos) )
 
-        self.sPrint( "Sunrise: %s" % self.sunrise, sfont, xmax*0.05, 3, lc )
-        self.sPrint( "Sunset: %s" % self.sunset, sfont, xmax*0.05, 4, lc )
+        self.sPrint( gettext("Sunrise", lang) + ": %s" % self.sunrise, sfont, xmax*0.05, 3, lc )
+        self.sPrint( gettext("Sunset",lang) + ": %s" % self.sunset, sfont, xmax*0.05, 4, lc )
 
-        s = "Daylight (Hrs:Min): %d:%02d" % (dayHrs, dayMins)
+        s = gettext("Daylight",lang)+" (Hrs:Min): %d:%02d" % (dayHrs, dayMins)
         self.sPrint( s, sfont, xmax*0.05, 5, lc )
 
-        if inDaylight: s = "Sunset in (Hrs:Min): %d:%02d" % stot( tDarkness )
-        else:          s = "Sunrise in (Hrs:Min): %d:%02d" % stot( tDaylight )
+        if inDaylight: s = gettext("Sunset in (Hrs:Min)",lang) + ": %d:%02d" % stot( tDarkness )
+        else:          s = gettext("Sunrise in (Hrs:Min)",lang) + ": %d:%02d" % stot( tDaylight )
         self.sPrint( s, sfont, xmax*0.05, 6, lc )
 
-        s = "Update: %s" % self.wLastUpdate
+        s = gettext("Update",lang)+": %s" % self.wLastUpdate
         self.sPrint( s, sfont, xmax*0.05, 7, lc )
 
         cc = 'current_conditions'
-        s = "Current Cond: %s" % self.w[cc]['text']
+        s = gettext("Current Cond",lang)+": %s" % gettext(self.w[cc]['text'], lang)
         self.sPrint( s, sfont, xmax*0.05, 8, lc )
         
         # Outside Temperature
