@@ -324,7 +324,7 @@ class SmDisplay:
         x2 = 0.78    # Second Column Xaxis Start Pos
 
         font = pygame.font.SysFont( fn, int(ymax*th), bold=1 )
-        txt = font.render( 'Windchill:', True, lc )
+        txt = font.render( gettext('Windchill', lang)+':', True, lc )
         self.screen.blit( txt, (xmax*xp,ymax*st) )
         txt = font.render( self.feels_like, True, lc )
         self.screen.blit( txt, (xmax*x2,ymax*st) )
@@ -334,7 +334,7 @@ class SmDisplay:
         dtxt = dfont.render( uniTmp, True, lc )
         self.screen.blit( dtxt, (xmax*x2+tx*1.01,ymax*(st+so)) )
 
-        txt = font.render( 'Windspeed:', True, lc )
+        txt = font.render( gettext('Windspeed', lang)+':', True, lc )
         self.screen.blit( txt, (xmax*xp,ymax*(st+gp*1)) )
         if 'calm' in self.wind_speed:
             windStr = " 0 %s" % windSpeed
@@ -344,17 +344,17 @@ class SmDisplay:
         txt = font.render( windStr, True, lc )
         self.screen.blit( txt, (xmax*x2,ymax*(st+gp*1)) )
 
-        txt = font.render( 'Direction:', True, lc )
+        txt = font.render( gettext('Direction', lang)+':', True, lc )
         self.screen.blit( txt, (xmax*xp,ymax*(st+gp*2)) )
         txt = font.render( string.upper(self.wind_dir), True, lc )
         self.screen.blit( txt, (xmax*x2,ymax*(st+gp*2)) )
 
-        txt = font.render( 'Barometer:', True, lc )
+        txt = font.render( gettext('Barometer', lang)+':', True, lc )
         self.screen.blit( txt, (xmax*xp,ymax*(st+gp*3)) )
         txt = font.render( self.baro + baroUnits, True, lc )
         self.screen.blit( txt, (xmax*x2,ymax*(st+gp*3)) )
 
-        txt = font.render( 'Humidity:', True, lc )
+        txt = font.render( gettext('Humidity', lang)+':', True, lc )
         self.screen.blit( txt, (xmax*xp,ymax*(st+gp*4)) )
         txt = font.render( self.humid+'%', True, lc )
         self.screen.blit( txt, (xmax*x2,ymax*(st+gp*4)) )
@@ -371,7 +371,7 @@ class SmDisplay:
         rpfont = pygame.font.SysFont( fn, int(ymax*rpth), bold=1 )
 
         # Sub Window 1
-        txt = font.render( 'Today:', True, lc )
+        txt = font.render( gettext('Today', lang)+':', True, lc )
         (tx,ty) = txt.get_size()
         self.screen.blit( txt, (xmax*wx-tx/2,ymax*(wy+gp*0)) )
         txt = font.render( self.temps[0][0] + ' / ' + self.temps[0][1], True, lc )
@@ -395,7 +395,7 @@ class SmDisplay:
         self.screen.blit( icon, (xmax*wx-ix/2,ymax*(wy+gp*1.2)+yo) )
 
         # Sub Window 2
-        txt = font.render( self.day[1]+':', True, lc )
+        txt = font.render( gettext(self.day[1], lang)+':', True, lc )
         (tx,ty) = txt.get_size()
         self.screen.blit( txt, (xmax*(wx*3)-tx/2,ymax*(wy+gp*0)) )
         txt = font.render( self.temps[1][0] + ' / ' + self.temps[1][1], True, lc )
@@ -418,7 +418,7 @@ class SmDisplay:
         self.screen.blit( icon, (xmax*wx*3-ix/2,ymax*(wy+gp*1.2)+yo) )
 
         # Sub Window 3
-        txt = font.render( self.day[2]+':', True, lc )
+        txt = font.render( gettext(self.day[2], lang)+':', True, lc )
         (tx,ty) = txt.get_size()
         self.screen.blit( txt, (xmax*(wx*5)-tx/2,ymax*(wy+gp*0)) )
         txt = font.render( self.temps[2][0] + ' / ' + self.temps[2][1], True, lc )
@@ -441,7 +441,7 @@ class SmDisplay:
         self.screen.blit( icon, (xmax*wx*5-ix/2,ymax*(wy+gp*1.2)+yo) )
 
         # Sub Window 4
-        txt = font.render( self.day[3]+':', True, lc )
+        txt = font.render( gettext(self.day[3], lang)+':', True, lc )
         (tx,ty) = txt.get_size()
         self.screen.blit( txt, (xmax*(wx*7)-tx/2,ymax*(wy+gp*0)) )
         txt = font.render( self.temps[3][0] + ' / ' + self.temps[3][1], True, lc )
