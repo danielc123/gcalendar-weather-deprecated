@@ -522,6 +522,8 @@ class SmDisplay:
         cal = calendar.month( yr, mn ).splitlines()
         i = 0
         for cal_line in cal:
+            if i==1:
+                cal_line = string.replace(cal_line, '\xc3', 'a')
             txt = cfont.render( cal_line, True, lc )
             self.screen.blit( txt, (xmax*xs,ymax*(ys+gp*i)) )
             i = i + 1
