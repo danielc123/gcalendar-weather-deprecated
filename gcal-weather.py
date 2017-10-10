@@ -594,17 +594,21 @@ class SmDisplay:
         self.sPrint( s, sfont, xmax*0.05, 8, lc )
         
         # Outside Temperature
-        s = self.temp + unichr(176) + 'F '
-        s = s + self.baro + baroUnits
-        s = s + 'Wind ' + self.wind_speed
+        s = gettext("Outside Temp", lang)+": %s" % self.temp + uniTmp
+        self.sPrint( s, sfont, xmax*0.05, 9, lc )
+
+        s = gettext("Barometer", lang) + ": %s %s" % (self.baro, baroUnits)
+        self.sPrint( s, sfont, xmax*0.05, 10, lc )
+
+        s = gettext("Windspeed", lang)+  ": %.0f %s" % (float(self.wind_speed) * windScale, windSpeed)
         if self.gust != 'N/A': 
             s = s + '/' + self.gust
         if self.wind_speed != 'calm':
-            s = s + 'windSpeed @' + self.wind_direction + unichr(176)
-        self.sPrint( s, sfont, xmax*0.05, 9, lc )
+            s = s + ' @' + self.wind_direction + unichr(176)
+        self.sPrint( s, sfont, xmax*0.05, 11, lc )
 
-        s = "Visability %smi" % self.vis
-        self.sPrint( s, sfont, xmax*0.05, 10, lc )
+        s = gettext("Visibility", lang) + " %s %s" % (self.vis, visiUnits) 
+        self.sPrint( s, sfont, xmax*0.05, 12, lc )
 
         # Update the display
         pygame.display.update()
