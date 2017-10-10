@@ -76,14 +76,16 @@ if disp_units == 'metric':
     if lang=='es':
         locale.setlocale(locale.LC_ALL, 'es_ES.UTF-8')    #added locale to set time in local format
     uniTmp = unichr(0x2103)        # Unicode for DegreeC
-    windSpeed = ' m/s'
-    windScale = 0.277778        # To convert kmh to m/s.
-    baroUnits = ''
+    windSpeed = 'km/h'
+    windScale = 1.0        # To convert kmh to m/s.
+    baroUnits = 'hPa'
+    visiUnits = 'km'
 else:
     uniTmp = unichr(0x2109)        # Unicode for DegreeF
-    windSpeed = ' mph'
+    windSpeed = 'mph'
     windScale = 1.0
-    baroUnits = ' "Hg'
+    baroUnits = '"Hg'
+    visiUnits = 'Mi'
 
 
 ###############################################################################
