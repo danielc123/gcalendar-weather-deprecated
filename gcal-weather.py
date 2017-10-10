@@ -265,20 +265,16 @@ class SmDisplay:
         xmin = 10
         xmax = self.xmax
         ymax = self.ymax
-        lines = 5
+        lines = 2
         lc = (255,255,255) 
         fn = "freesans"
+        wx = 0.72   #vertical screen division Time & Google event | Weather & Forecast
 
         # Draw Screen Border
-        pygame.draw.line( self.screen, lc, (xmin,0),(xmax,0), lines )
-        pygame.draw.line( self.screen, lc, (xmin,0),(xmin,ymax), lines )
-        pygame.draw.line( self.screen, lc, (xmin,ymax),(xmax,ymax), lines )    # Bottom
-        pygame.draw.line( self.screen, lc, (xmax,0),(xmax,ymax+2), lines )
-        pygame.draw.line( self.screen, lc, (xmin,ymax*0.15),(xmax,ymax*0.15), lines )
-        pygame.draw.line( self.screen, lc, (xmin,ymax*0.5),(xmax,ymax*0.5), lines )
-        pygame.draw.line( self.screen, lc, (xmax*0.25,ymax*0.5),(xmax*0.25,ymax), lines )
-        pygame.draw.line( self.screen, lc, (xmax*0.5,ymax*0.15),(xmax*0.5,ymax), lines )
-        pygame.draw.line( self.screen, lc, (xmax*0.75,ymax*0.5),(xmax*0.75,ymax), lines )
+        pygame.draw.line( self.screen, lc, (xmax*wx,ymax*0.25),(xmax,ymax*0.25), lines )            #upper horizontal lines
+        pygame.draw.line( self.screen, lc, (xmax*wx,ymax*0.4375),(xmax,ymax*0.4375), lines )            #upper horizontal lines
+        pygame.draw.line( self.screen, lc, (xmax*wx,ymax*0.6250),(xmax,ymax*0.6250), lines )            #upper horizontal lines
+        pygame.draw.line( self.screen, lc, (xmax*wx,ymax*0.8125),(xmax,ymax*0.8125), lines )            #upper horizontal lines
 
         # Time & Date
         th = self.tmdateTh
