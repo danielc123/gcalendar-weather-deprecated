@@ -270,7 +270,7 @@ class SmDisplay:
         fn = "freesans"
         wx = 0.72   #vertical screen division Time & Google event | Weather & Forecast
 
-        # Draw Screen Border
+        # Draw Weather Forecast Sub divisions
         pygame.draw.line( self.screen, lc, (xmax*wx,ymax*0.25),(xmax,ymax*0.25), lines )            #upper horizontal lines
         pygame.draw.line( self.screen, lc, (xmax*wx,ymax*0.4375),(xmax,ymax*0.4375), lines )            #upper horizontal lines
         pygame.draw.line( self.screen, lc, (xmax*wx,ymax*0.6250),(xmax,ymax*0.6250), lines )            #upper horizontal lines
