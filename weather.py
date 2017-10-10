@@ -61,7 +61,7 @@ mode = 'w'        # Default to weather mode.
 
 disp_units = "metric"
 #disp_units = "imperial"
-zip_code = '48085'
+zip_code = 'SPXX0819'
 
 # Show degree F symbol using magic unicode char in a smaller font size.
 # The variable uniTmp holds a unicode character that is either DegreeC or DegreeF.
@@ -143,6 +143,7 @@ class SmDisplay:
         self.sunrise = '7:00 AM'
         self.sunset = '8:00 PM'
 
+        """
         # Larger Display
         self.xmax = 800 - 35
         self.ymax = 600 - 5
@@ -154,11 +155,11 @@ class SmDisplay:
         self.tmdateYPos = 10        # Time & Date Y Position
         self.tmdateYPosSm = 18        # Time & Date Y Position Small
         self.errCount = 0        # Count number of failed updates.
-
-        """
+		"""
+        
         # Small Display
-        self.xmax = 656 - 35
-        self.ymax = 416 - 5
+        self.xmax = 800 - 15
+        self.ymax = 480 - 5
         self.scaleIcon = False        # No icon scaling needed.
         self.iconScale = 1.0
         self.subwinTh = 0.065        # Sub window text height
@@ -166,7 +167,7 @@ class SmDisplay:
         self.tmdateSmTh = 0.075
         self.tmdateYPos = 1        # Time & Date Y Position
         self.tmdateYPosSm = 8        # Time & Date Y Position Small
-        """
+        
 
 
 
