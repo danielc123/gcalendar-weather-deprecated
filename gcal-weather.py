@@ -283,9 +283,9 @@ class SmDisplay:
         font = pygame.font.SysFont( fn, int(ymax*th), bold=1 )    # Regular Font
         sfont = pygame.font.SysFont( fn, int(ymax*sh), bold=1 )    # Small Font for Seconds
 
-        tm1 = time.strftime( "%a, %b %d   %I:%M", time.localtime() )    # 1st part
+        tm1 = time.strftime( "%a, %b %d   %H:%M", time.localtime() ).decode('utf-8').title()    # 1st part
         tm2 = time.strftime( "%S", time.localtime() )                    # 2nd
-        tm3 = time.strftime( " %P", time.localtime() )                    # 
+        tm3 = "" #time.strftime( " %P", time.localtime() )                    # 
 
         rtm1 = font.render( tm1, True, lc )
         (tx1,ty1) = rtm1.get_size()
@@ -491,9 +491,9 @@ class SmDisplay:
         font = pygame.font.SysFont( fn, int(ymax*th), bold=1 )        # Regular Font
         sfont = pygame.font.SysFont( fn, int(ymax*sh), bold=1 )        # Small Font for Seconds
 
-        tm1 = time.strftime( "%a, %b %d   %I:%M", time.localtime() )    # 1st part
+        tm1 = time.strftime( "%a, %b %d   %H:%M", time.localtime() ).decode('utf-8').title()    # 1st part
         tm2 = time.strftime( "%S", time.localtime() )            # 2nd
-        tm3 = time.strftime( " %P", time.localtime() )            # 
+        tm3 = "" #time.strftime( " %P", time.localtime() )            # 
 
         rtm1 = font.render( tm1, True, lc )
         (tx1,ty1) = rtm1.get_size()
@@ -558,9 +558,9 @@ class SmDisplay:
         font = pygame.font.SysFont( fn, int(ymax*thl), bold=1 )        # Regular Font
         sfont = pygame.font.SysFont( fn, int(ymax*sh), bold=1 )        # Small Font
 
-        tm1 = time.strftime( "%a, %b %d   %I:%M", time.localtime() )    # 1st part
+        tm1 = time.strftime( "%a, %b %d   %H:%M", time.localtime() ).decode('utf-8').title()    # 1st part
         tm2 = time.strftime( "%S", time.localtime() )            # 2nd
-        tm3 = time.strftime( " %P", time.localtime() )            # 
+        tm3 = ""    #time.strftime( " %P", time.localtime() )            # 
 
         rtm1 = font.render( tm1, True, lc )
         (tx1,ty1) = rtm1.get_size()
@@ -643,14 +643,14 @@ def Daylight( sr, st ):
 
     # From a string like '7:00 AM', build a datetime variable for
     # today with the hour and minute set to sunrise.
-    t = time.strptime( sr, '%I:%M %p' )        # Temp Var
+    t = time.strptime( "07:00", '%H:%M' )       #t = time.strptime( sr, '%H:%M' ) # Temp Var
     tSunrise = tNow                    # Copy time now.
     # Overwrite hour and minute with sunrise hour and minute.
     tSunrise = tSunrise.replace( hour=t.tm_hour, minute=t.tm_min, second=0 )
     
     # From a string like '8:00 PM', build a datetime variable for
     # today with the hour and minute set to sunset.
-    t = time.strptime( myDisp.sunset, '%I:%M %p' )
+    t = time.strptime( "20:00", '%H:%M' ) #t = time.strptime( myDisp.sunset, '%H:%M' )
     tSunset = tNow                    # Copy time now.
     # Overwrite hour and minute with sunset hour and minute.
     tSunset = tSunset.replace( hour=t.tm_hour, minute=t.tm_min, second=0 )
