@@ -17,7 +17,7 @@ def gettext( text, lang='en' ):
                 'Sunday':'DOM', 'Today':'HOY',
                 'Windchill': u'Sens. térmica', 'Windspeed':'Vel. viento',
                 'Direction': u'Direccion', 'Barometer': u'Presión', 'Humidity':'Humedad',
-                'Sunrise': 'Salida de sol', 'Sunset': 'Puesta de sol', 'Daylight': 'Horas de sol',
+                'Sunrise': 'Salida de sol', 'Sunset': 'Puesta de sol', 'Daylight (Hrs:Min)': 'Horas de sol (hrs:min)',
                 'Sunset in (Hrs:Min)':'Puesta de sol en (hrs:min)', 'Update':'Actualizado',
                 'Sunrise in (Hrs:Min)':'Salida de sol en (hrs:min)', 'Current Cond': u'Condición actual',
                 'Outside Temp':'Temperatura exterior', 'Visibility':'Visibilidad', 
