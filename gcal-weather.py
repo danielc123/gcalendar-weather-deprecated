@@ -579,7 +579,7 @@ class SmDisplay:
         self.sPrint( gettext("Sunrise", lang) + ": %s" % self.sunrise, sfont, xmax*0.05, 3, lc )
         self.sPrint( gettext("Sunset",lang) + ": %s" % self.sunset, sfont, xmax*0.05, 4, lc )
 
-        s = gettext("Daylight",lang)+" (Hrs:Min): %d:%02d" % (dayHrs, dayMins)
+        s = gettext("Daylight (Hrs:Min)",lang)+": %d:%02d" % (dayHrs, dayMins)
         self.sPrint( s, sfont, xmax*0.05, 5, lc )
 
         if inDaylight: s = gettext("Sunset in (Hrs:Min)",lang) + ": %d:%02d" % stot( tDarkness )
