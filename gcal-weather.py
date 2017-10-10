@@ -67,11 +67,14 @@ mode = 'w'        # Default to weather mode.
 disp_units = "metric"
 #disp_units = "imperial"
 zip_code = 'SPXX0819'
+lang = 'es'         #'en': English (default), 'es': Spanish
 
 # Show degree F symbol using magic unicode char in a smaller font size.
 # The variable uniTmp holds a unicode character that is either DegreeC or DegreeF.
 # Yep, one unicode character is has both the letter and the degree symbol.
 if disp_units == 'metric':
+    if lang=='es':
+        locale.setlocale(locale.LC_ALL, 'es_ES.UTF-8')    #added locale to set time in local format
     uniTmp = unichr(0x2103)        # Unicode for DegreeC
     windSpeed = ' m/s'
     windScale = 0.277778        # To convert kmh to m/s.
