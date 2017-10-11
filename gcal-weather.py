@@ -42,7 +42,6 @@ import datetime
 import random
 from pygame.locals import *
 import calendar
-# import serial
 
 import pywapi
 import string
@@ -52,7 +51,7 @@ from X10 import *
 
 ## dependencies added
 import locale
-from strings_defs import *      #strings file to store other languages strings
+from strings_defs import *      # Strings file to store other languages translated strings
 
 
 # Setup GPIO pin BCM GPIO04
@@ -74,7 +73,7 @@ lang = 'es'         #'en': English (default), 'es': Spanish
 # Yep, one unicode character is has both the letter and the degree symbol.
 if disp_units == 'metric':
     if lang=='es':
-        locale.setlocale(locale.LC_ALL, 'es_ES.UTF-8')    #added locale to set time in local format
+        locale.setlocale(locale.LC_ALL, 'es_ES.UTF-8')    # Added locale to set time in local format
     uniTmp = unichr(0x2103)        # Unicode for DegreeC
     windSpeed = 'km/h'
     windScale = 1.0        # To convert kmh to m/s.
@@ -170,9 +169,9 @@ class SmDisplay:
         # Small Display
         self.xmax = 800
         self.ymax = 480
-        self.scaleIcon = False        # No icon scaling needed.
+        self.scaleIcon = False      # No icon scaling needed.
         self.iconScale = 1.0
-        self.subwinTh = 0.065        # Sub window text height
+        self.subwinTh = 0.065       # Sub window text height
         self.tmdateTh = 0.30        # Time HH:MM Text Height
         self.tmdateSmTh = 0.15      # Time ss seconds Text Height
         self.tmdateDtTh = 0.075     # Date Text Height
@@ -260,6 +259,9 @@ class SmDisplay:
 
     ####################################################################
     def disp_weather(self):
+    # New design of the screen: It is divided in 2 fractions by a vertical imaginary line at wx*100%
+    # The left side shows Current Time and Date at the Top and below of that a list of 3 Google events 
+    # The reight side the Current Temp at the top 25% height and below 4 windows with the Weather Forecast
         # Fill the screen with black
         self.screen.fill( (0,0,0) )
         xmin = 10
@@ -268,15 +270,15 @@ class SmDisplay:
         lines = 2
         lc = (255,255,255) 
         fn = "freesans"
-        wx = 0.72   #vertical screen division Time & Google event | Weather & Forecast
+        wx = 0.72   # wx determine the screen vertical division from left
 
-        # Draw Weather Forecast Sub divisions
-        pygame.draw.line( self.screen, lc, (xmax*wx,ymax*0.25),(xmax,ymax*0.25), lines )            #upper horizontal lines
-        pygame.draw.line( self.screen, lc, (xmax*wx,ymax*0.4375),(xmax,ymax*0.4375), lines )            #upper horizontal lines
-        pygame.draw.line( self.screen, lc, (xmax*wx,ymax*0.6250),(xmax,ymax*0.6250), lines )            #upper horizontal lines
-        pygame.draw.line( self.screen, lc, (xmax*wx,ymax*0.8125),(xmax,ymax*0.8125), lines )            #upper horizontal lines
+        # Draw Weather Forecast Sub divisions: height 25% | 75%/4 | 75%/4 | 75%/4 | 75%/4
+        pygame.draw.line( self.screen, lc, (xmax*wx,ymax*0.25),(xmax,ymax*0.25), lines )        # Temp Window 25% height
+        pygame.draw.line( self.screen, lc, (xmax*wx,ymax*0.4375),(xmax,ymax*0.4375), lines )    # 1st W Forecast
+        pygame.draw.line( self.screen, lc, (xmax*wx,ymax*0.6250),(xmax,ymax*0.6250), lines )    # 2nd W Forecast
+        pygame.draw.line( self.screen, lc, (xmax*wx,ymax*0.8125),(xmax,ymax*0.8125), lines )    # 3rd W Forecast
 
-        # Time & Date
+        # Time & Date on the left side
         th = self.tmdateTh
         sh = self.tmdateSmTh
         dh = self.tmdateDtTh
@@ -295,18 +297,19 @@ class SmDisplay:
         rtm3 = font.render( tm3, True, lc )
         (tx3,ty3) = rtm3.get_size()
 
-        tp = xmax*wx / 2 - (tx1 + tx2 ) / 2
+        tp = xmax*wx / 2 - (tx1 + tx2 ) / 2     # Centered on the left side of the screen
         self.screen.blit( rtm1, (tp,self.tmdateYPos) )
         self.screen.blit( rtm2, (tp+tx1+3,self.tmdateYPosSm) )
-        tp = xmax*wx / 2 - tx3 / 2
+        tp = xmax*wx / 2 - tx3 / 2              # Date below time, centered on the left side
         self.screen.blit( rtm3, (tp,ty1-15) )
 
-        # Outside Temp
-        font = pygame.font.SysFont( fn, int(ymax*(0.5-0.15)*0.9), bold=1 )
+
+        # Outside Temp and Weather Forecast on the right side 25% height
+        font = pygame.font.SysFont( fn, int(ymax*(0.2125)), bold=0 )
         txt = font.render( self.temp, True, lc )
         (tx,ty) = txt.get_size()
-        # Show degree F symbol using magic unicode char in a smaller font size.
-        dfont = pygame.font.SysFont( fn, int(ymax*(0.5-0.15)*0.5), bold=1 )
+        # Show degree F or C symbol using magic unicode char in a smaller font size.
+        dfont = pygame.font.SysFont( fn, int(ymax*(0.2125)*0.5), bold=0 )
         dtxt = dfont.render( uniTmp, True, lc )
         (tx2,ty2) = dtxt.get_size()
         x = xmax*0.27 - (tx*1.02 + tx2) / 2

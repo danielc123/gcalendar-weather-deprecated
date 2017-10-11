@@ -1,7 +1,9 @@
 The Original code written by Jim Kemp http://www.ph-elec.com/
 
+Modified to get used with the Lichee Zero Pi
+
 ========================================
- Raspberry Pi Internet Weather Station
+Google Calendar and Weather Station
 ========================================
 
 Downloaded from:
