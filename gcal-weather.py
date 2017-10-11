@@ -321,38 +321,6 @@ class SmDisplay:
         gp =     0.1875             # Vertical Spacing between Windows
         th =     self.subwinTh      # Text Height
 
-        txt = font.render( gettext('Windspeed', lang)+':', True, lc )
-        self.screen.blit( txt, (xmax*xp,ymax*(st+gp*1)) )
-        if 'calm' in self.wind_speed:
-            windStr = " 0 %s" % windSpeed
-        else:
-            windSp = float(self.wind_speed) * windScale
-            windStr = "%.0f %s" % (windSp, windSpeed)
-        txt = font.render( windStr, True, lc )
-        self.screen.blit( txt, (xmax*x2,ymax*(st+gp*1)) )
-
-        txt = font.render( gettext('Direction', lang)+':', True, lc )
-        self.screen.blit( txt, (xmax*xp,ymax*(st+gp*2)) )
-        txt = font.render( string.upper(self.wind_dir), True, lc )
-        self.screen.blit( txt, (xmax*x2,ymax*(st+gp*2)) )
-
-        txt = font.render( gettext('Barometer', lang)+':', True, lc )
-        self.screen.blit( txt, (xmax*xp,ymax*(st+gp*3)) )
-        txt = font.render( self.baro + baroUnits, True, lc )
-        self.screen.blit( txt, (xmax*x2,ymax*(st+gp*3)) )
-
-        txt = font.render( gettext('Humidity', lang)+':', True, lc )
-        self.screen.blit( txt, (xmax*xp,ymax*(st+gp*4)) )
-        txt = font.render( self.humid+'%', True, lc )
-        self.screen.blit( txt, (xmax*x2,ymax*(st+gp*4)) )
-
-        wx =     0.125            # Sub Window Centers
-        wy =     0.510            # Sub Windows Yaxis Start
-        th =     self.subwinTh        # Text Height
-        rpth =     0.100            # Rain Present Text Height
-        gp =     0.065            # Line Spacing Gap
-        ro =     0.010 * xmax       # "Rain:" Text Window Offset winthin window. 
-        rpl =    5.95            # Rain percent line offset.
 
         font = pygame.font.SysFont( fn, int(ymax*th), bold=1 )
         rpfont = pygame.font.SysFont( fn, int(ymax*rpth), bold=1 )
