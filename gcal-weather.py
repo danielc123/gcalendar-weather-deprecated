@@ -312,32 +312,14 @@ class SmDisplay:
         dfont = pygame.font.SysFont( fn, int(ymax*(0.2125)*0.5), bold=0 )
         dtxt = dfont.render( uniTmp, True, lc )
         (tx2,ty2) = dtxt.get_size()
-        x = xmax*0.27 - (tx*1.02 + tx2) / 2
-        self.screen.blit( txt, (x,ymax*0.15) )
-        #self.screen.blit( txt, (xmax*0.02,ymax*0.15) )
+        x = xmax*( wx +1 ) / 2 - (tx*1.02 + tx2) / 2    # Centered on the right side
+        self.screen.blit( txt, (x,0) )
         x = x + (tx*1.02)
-        self.screen.blit( dtxt, (x,ymax*0.2) )
-        #self.screen.blit( dtxt, (xmax*0.02+tx*1.02,ymax*0.2) )
+        self.screen.blit( dtxt, (x,12) )                # Temp degree symbol aside the temperature
 
-        # Conditions
-        st = 0.16    # Yaxis Start Pos
-        gp = 0.065   # Line Spacing Gap
-        th = 0.06    # Text Height
-        dh = 0.05    # Degree Symbol Height
-        so = 0.01    # Degree Symbol Yaxis Offset
-        xp = 0.52    # Xaxis Start Pos
-        x2 = 0.78    # Second Column Xaxis Start Pos
-
-        font = pygame.font.SysFont( fn, int(ymax*th), bold=1 )
-        txt = font.render( gettext('Windchill', lang)+':', True, lc )
-        self.screen.blit( txt, (xmax*xp,ymax*st) )
-        txt = font.render( self.feels_like, True, lc )
-        self.screen.blit( txt, (xmax*x2,ymax*st) )
-        (tx,ty) = txt.get_size()
-        # Show degree F symbol using magic unicode char.
-        dfont = pygame.font.SysFont( fn, int(ymax*dh), bold=1 )
-        dtxt = dfont.render( uniTmp, True, lc )
-        self.screen.blit( dtxt, (xmax*x2+tx*1.01,ymax*(st+so)) )
+        wy =     0.250 + 0.1875/2   # Sub Windows Yaxis Center
+        gp =     0.1875             # Vertical Spacing between Windows
+        th =     self.subwinTh      # Text Height
 
         txt = font.render( gettext('Windspeed', lang)+':', True, lc )
         self.screen.blit( txt, (xmax*xp,ymax*(st+gp*1)) )
