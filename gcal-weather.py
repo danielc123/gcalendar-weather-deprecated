@@ -321,6 +321,9 @@ class SmDisplay:
         gp =     0.1875             # Vertical Spacing between Windows
         th =     self.subwinTh      # Text Height
 
+        font = pygame.font.SysFont( fn, int(ymax*th), bold=0 )          # Weekday 
+        mfont = pygame.font.SysFont( fn, int(ymax*th*1.3), bold=0 )     # Max and Min Temp
+        dfont = pygame.font.SysFont( fn, int(ymax*th*1.3*0.5), bold=0 ) # Degree symbol
 
         font = pygame.font.SysFont( fn, int(ymax*th), bold=1 )
         rpfont = pygame.font.SysFont( fn, int(ymax*rpth), bold=1 )
