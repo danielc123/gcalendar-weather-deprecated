@@ -329,12 +329,18 @@ class SmDisplay:
         (dtx, dty) = dtxt.get_size()                                    # Degree dimensions
 
         # Sub Window 1
-        txt = font.render( gettext('Today', lang)+':', True, lc )
-        (tx,ty) = txt.get_size()
-        self.screen.blit( txt, (xmax*wx-tx/2,ymax*(wy+gp*0)) )
-        txt = font.render( self.temps[0][0] + ' / ' + self.temps[0][1], True, lc )
-        (tx,ty) = txt.get_size()
-        self.screen.blit( txt, (xmax*wx-tx/2,ymax*(wy+gp*5)) )
+        txt = font.render( gettext('Today', lang), True, lc )           # Label today rendered
+        (tx1,ty1) = txt.get_size()                                      # Label dimensions
+        self.screen.blit( txt, (xmax*wx,ymax*(wy+gp*0)-ty1/2) )         # 
+        txt = font.render( self.temps[0][0], True, lc )                 # Max temp rendered
+        (tx2,ty2) = txt.get_size()                                      # Max temp dimensions
+        self.screen.blit( txt, (xmax-tx2-dtx-4,ymax*(wy+gp*0)-ty2+4) )  # Max temp located on right edge of screen
+        self.screen.blit( dtxt, (xmax-dtx-4,ymax*(wy+gp*0)-ty2+9) )     # Degree symbol next to max temp
+        txt = mfont.render( self.temps[0][1], True, lc )                # Min temp rendered
+        (tx3,ty3) = txt.get_size()                                      # Min temp dimensions
+        self.screen.blit( txt, (xmax-tx3-dtx-4,ymax*(wy+gp*0)-3) )      # Min temp located on right edge of screen
+        self.screen.blit( dtxt, (xmax-dtx-4,ymax*(wy+gp*0)+2) )         # Degree symbol next to min temp
+
         #rtxt = font.render( 'Rain:', True, lc )
         #self.screen.blit( rtxt, (ro,ymax*(wy+gp*5)) )
         rptxt = rpfont.render( self.rain[0]+'%', True, lc )
