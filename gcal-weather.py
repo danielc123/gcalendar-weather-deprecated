@@ -351,7 +351,7 @@ class SmDisplay:
             yo = (90 - iy) / 2 
         else: 
             yo = 0
-        self.screen.blit( icon, ((xmax*(wx+1)+tx1-max(tx2,tx3)-dtx)/2-ix/2-2,ymax*(wy+gp*0)-iy/2) ) # Icon located in the Window middle
+        self.screen.blit( icon, ((xmax*(wx+1)+tx1-max(tx2,tx3)-dtx)/2-ix/2-2,ymax*(wy+gp*0)-iy/2) )     # Icon located in the Window middle
 
         # Sub Window 2
         txt = font.render( gettext(self.day[1], lang), True, lc )       # Label Weekday today+1
