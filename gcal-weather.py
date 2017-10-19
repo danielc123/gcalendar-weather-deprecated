@@ -325,8 +325,8 @@ class SmDisplay:
         mfont = pygame.font.SysFont( fn, int(ymax*th*1.3), bold=0 )     # Max and Min Temp
         dfont = pygame.font.SysFont( fn, int(ymax*th*1.3*0.5), bold=0 ) # Degree symbol
 
-        font = pygame.font.SysFont( fn, int(ymax*th), bold=1 )
-        rpfont = pygame.font.SysFont( fn, int(ymax*rpth), bold=1 )
+        dtxt = dfont.render( uniTmp, True, lc)                          # Degree symbol rendered
+        (dtx, dty) = dtxt.get_size()                                    # Degree dimensions
 
         # Sub Window 1
         txt = font.render( gettext('Today', lang)+':', True, lc )
