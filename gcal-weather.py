@@ -341,11 +341,6 @@ class SmDisplay:
         self.screen.blit( txt, (xmax-tx3-dtx-4,ymax*(wy+gp*0)-3) )      # Min temp located on right edge of screen
         self.screen.blit( dtxt, (xmax-dtx-4,ymax*(wy+gp*0)+2) )         # Degree symbol next to min temp
 
-        #rtxt = font.render( 'Rain:', True, lc )
-        #self.screen.blit( rtxt, (ro,ymax*(wy+gp*5)) )
-        rptxt = rpfont.render( self.rain[0]+'%', True, lc )
-        (tx,ty) = rptxt.get_size()
-        self.screen.blit( rptxt, (xmax*wx-tx/2,ymax*(wy+gp*rpl)) )
         icon = pygame.image.load(sd + icons[self.icon[0]]).convert_alpha()
         (ix,iy) = icon.get_size()
         if self.scaleIcon:
