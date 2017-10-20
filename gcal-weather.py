@@ -294,7 +294,7 @@ class SmDisplay:
         (tx1,ty1) = rtm1.get_size()
         rtm2 = sfont.render( tm2, True, lc )
         (tx2,ty2) = rtm2.get_size()
-        rtm3 = font.render( tm3, True, lc )
+        rtm3 = dfont.render( tm3, True, lc )
         (tx3,ty3) = rtm3.get_size()
 
         tp = xmax*wx / 2 - (tx1 + tx2 ) / 2     # Centered on the left side of the screen
