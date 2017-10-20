@@ -379,16 +379,18 @@ class SmDisplay:
         self.screen.blit( icon, ((xmax*(wx+1)+tx1-max(tx2,tx3)-dtx)/2-ix/2-2,ymax*(wy+gp*1)-iy/2)  )    # Icon located in the Window middle
 
         # Sub Window 3
-        txt = font.render( gettext(self.day[2], lang)+':', True, lc )
-        (tx,ty) = txt.get_size()
-        self.screen.blit( txt, (xmax*(wx*5)-tx/2,ymax*(wy+gp*0)) )
-        txt = font.render( self.temps[2][0] + ' / ' + self.temps[2][1], True, lc )
-        (tx,ty) = txt.get_size()
-        self.screen.blit( txt, (xmax*wx*5-tx/2,ymax*(wy+gp*5)) )
-        #self.screen.blit( rtxt, (xmax*wx*4+ro,ymax*(wy+gp*5)) )
-        rptxt = rpfont.render( self.rain[2]+'%', True, lc )
-        (tx,ty) = rptxt.get_size()
-        self.screen.blit( rptxt, (xmax*wx*5-tx/2,ymax*(wy+gp*rpl)) )
+        txt = font.render( gettext(self.day[2], lang), True, lc )       # Label Weekday today+2
+        (tx1,ty1) = txt.get_size()                                      # Weekday dimensions
+        self.screen.blit( txt, (xmax*wx,ymax*(wy+gp*2)-ty1/2) )         # 
+        txt = mfont.render( self.temps[2][0], True, lc )                # Max temp rendered
+        (tx2,ty2) = txt.get_size()                                      # Max temp dimensions
+        self.screen.blit( txt, (xmax-tx2-dtx-4,ymax*(wy+gp*2)-ty2+4) )  # Max temp located on right edge
+        self.screen.blit( dtxt, (xmax-dtx-4,ymax*(wy+gp*2)-ty2+9) )     # Degree symbol next
+        txt = mfont.render( self.temps[2][1], True, lc )                # Min temp rendered
+        (tx3,ty3) = txt.get_size()                                      # Min temp dimensions
+        self.screen.blit( txt, (xmax-tx3-dtx-4,ymax*(wy+gp*2)-3) )      # 
+        self.screen.blit( dtxt, (xmax-dtx-4,ymax*(wy+gp*2)+2) )         # Min temp located on right edge
+
         icon = pygame.image.load(sd + icons[self.icon[2]]).convert_alpha()
         (ix,iy) = icon.get_size()
         if self.scaleIcon:
@@ -399,7 +401,7 @@ class SmDisplay:
             yo = (90 - iy) / 2 
         else: 
             yo = 0
-        self.screen.blit( icon, (xmax*wx*5-ix/2,ymax*(wy+gp*1.2)+yo) )
+        self.screen.blit( icon, ((xmax*(wx+1)+tx1-max(tx2,tx3)-dtx)/2-ix/2-2,ymax*(wy+gp*2)-iy/2)  )    # Icon located in the Window middle
 
         # Sub Window 4
         txt = font.render( gettext(self.day[3], lang)+':', True, lc )
