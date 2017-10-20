@@ -388,8 +388,8 @@ class SmDisplay:
         self.screen.blit( dtxt, (xmax-dtx-4,ymax*(wy+gp*2)-ty2+9) )     # Degree symbol next
         txt = mfont.render( self.temps[2][1], True, lc )                # Min temp rendered
         (tx3,ty3) = txt.get_size()                                      # Min temp dimensions
-        self.screen.blit( txt, (xmax-tx3-dtx-4,ymax*(wy+gp*2)-3) )      # 
-        self.screen.blit( dtxt, (xmax-dtx-4,ymax*(wy+gp*2)+2) )         # Min temp located on right edge
+        self.screen.blit( txt, (xmax-tx3-dtx-4,ymax*(wy+gp*2)-3) )      # Min temp located on right edge
+        self.screen.blit( dtxt, (xmax-dtx-4,ymax*(wy+gp*2)+2) )         # Degree symbol next
 
         icon = pygame.image.load(sd + icons[self.icon[2]]).convert_alpha()
         (ix,iy) = icon.get_size()
