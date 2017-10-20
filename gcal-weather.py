@@ -234,14 +234,14 @@ class SmDisplay:
                 if ( w[f][0]['high'] == 'N/A' ):
                     self.temps[0][0] = '--'
                 else:    
-                    self.temps[0][0] = w[f][0]['high'] + uniTmp
-                self.temps[0][1] = w[f][0]['low'] + uniTmp
-                self.temps[1][0] = w[f][1]['high'] + uniTmp
-                self.temps[1][1] = w[f][1]['low'] + uniTmp
-                self.temps[2][0] = w[f][2]['high'] + uniTmp
-                self.temps[2][1] = w[f][2]['low'] + uniTmp
-                self.temps[3][0] = w[f][3]['high'] + uniTmp
-                self.temps[3][1] = w[f][3]['low'] + uniTmp
+                    self.temps[0][0] = w[f][0]['high']
+                self.temps[0][1] = w[f][0]['low']
+                self.temps[1][0] = w[f][1]['high']
+                self.temps[1][1] = w[f][1]['low']
+                self.temps[2][0] = w[f][2]['high']
+                self.temps[2][1] = w[f][2]['low']
+                self.temps[3][0] = w[f][3]['high']
+                self.temps[3][1] = w[f][3]['low']
             self.errCount = 0
 
         except KeyError:
