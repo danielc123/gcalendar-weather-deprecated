@@ -332,7 +332,7 @@ class SmDisplay:
         txt = font.render( gettext('Today', lang), True, lc )           # Label today rendered
         (tx1,ty1) = txt.get_size()                                      # Label dimensions
         self.screen.blit( txt, (xmax*wx,ymax*(wy+gp*0)-ty1/2) )         # 
-        txt = font.render( self.temps[0][0], True, lc )                 # Max temp rendered
+        txt = mfont.render( self.temps[0][0], True, lc )                 # Max temp rendered
         (tx2,ty2) = txt.get_size()                                      # Max temp dimensions
         self.screen.blit( txt, (xmax-tx2-dtx-4,ymax*(wy+gp*0)-ty2+4) )  # Max temp located on right edge of screen
         self.screen.blit( dtxt, (xmax-dtx-4,ymax*(wy+gp*0)-ty2+9) )     # Degree symbol next to max temp
