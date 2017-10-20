@@ -42,12 +42,9 @@ import datetime
 import random
 from pygame.locals import *
 import calendar
-
 import pywapi
 import string
-
 from icon_defs import *
-from X10 import *
 
 ## dependencies added
 import locale
@@ -669,47 +666,6 @@ def btnNext( channel ):
 #==============================================================
 #==============================================================
 
-#try:
-#    ser = serial.Serial( "/dev/ttyUSB0", 4800, timeout=2 )
-#    serActive = True
-#except:
-#    serActive = False
-#    print "Warning: can't open ttyUSB0 serial port."
-serActive = False
-
-if serActive:
-    X10 = False        # Assume no X10 until proven wrong.
-    ser.flushInput()    # Dump any junk that may be there.
-    ser.flushOutput()
-
-    ser.write( chr(0x8b) )    # Querry Status
-    c = ser.read( 1 )    # Wait for something from the CM11A.
-
-    # If an attached CM11A sends a 0xA5 then it requirs a clock reset.
-    if (len(c) == 1):
-        if (ord(c) == 0xA5):
-            X10_SetClock( ser )
-    else:
-        time.sleep( 0.5 )
-
-    # Get the current status from the CM11A X10 module.
-    (X10, c) = X10_Status( ser )
-
-    if X10 == False: print 'Error: CM11A.'
-
-    # If CM11A is present, turn on the lamp A3!
-    if X10 == True:
-        if X10_On( ser, housecode['A'], unitcode['3'] ):
-            print 'X10 On comand OK.'
-        else:
-            print 'Error in X10 On command.'
-        time.sleep( 2 )
-        if X10_Bright( ser, housecode['A'], unitcode['3'] ):
-            print 'X10 Full Bright OK.'
-        else:
-            print 'Error in X10 Bright command.'
-
-#exit()
 
 
 # Display all the available fonts.
@@ -855,20 +811,6 @@ while running:
 
     ( inDaylight, dayHrs, dayMins, tDaylight, tDarkness) = Daylight( myDisp.sunrise, myDisp.sunset )
 
-    if serActive:    
-        h = housecode['A']
-        u = unitcode['3']
-
-        if time.localtime().tm_sec == 30:
-            if ( inDaylight == False ): 
-                X10_On( ser, h, u )
-                print "X10 On"
-            else: 
-                X10_Off( ser, h, u )
-                print "X10 Off"
-        if time.localtime().tm_sec == 40:
-            if ( inDaylight == False ):
-                X10_Bright( ser, housecode['A'], unitcode['3'] )
     
     # Loop timer.
     pygame.time.wait( 100 )
