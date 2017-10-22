@@ -14,7 +14,7 @@ def gettext( text, lang='en' ):
             'es':{
                 'Monday':'LUN', 'Tuesday':'MAR', 'Wednesday':u'MIÉ', 
                 'Thursday':'JUE', 'Friday':'VIE', 'Saturday':u'SÁB', 
-                'Sunday':'DOM', 'Today':'HOY',
+                'Sunday':'DOM', 'Today':'HOY', 'TODAY':'HOY', 'TOMORROW':u'MAÑANA',
                 'Windchill': u'Sens. térmica', 'Windspeed':'Vel. viento',
                 'Direction': u'Direccion', 'Barometer': u'Presión', 'Humidity':'Humedad',
                 'Sunrise': 'Salida de sol', 'Sunset': 'Puesta de sol', 'Daylight (Hrs:Min)': 'Horas de sol (hrs:min)',
