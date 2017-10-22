@@ -71,7 +71,7 @@ except ImportError:
 
 mouseX, mouseY = 0, 0
 mode = 'w'        # Default to weather mode.
-
+data_refresh = 15
 disp_units = "metric"
 #disp_units = "imperial"
 zip_code = 'SPXX0819'
