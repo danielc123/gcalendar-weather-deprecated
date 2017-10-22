@@ -801,11 +801,6 @@ while running:
 
         # Once the screen is updated, we have a full second to get the weather.
         # Once per minute, update the weather from the net.
-        #if ( s == 0 ):
-        #    try:
-        #        myDisp.UpdateWeather()
-        #    except:
-        #        print "Unhandled Error in UndateWeather."
 
     if ( mode == 'h'):
         # Pace the screen updates to once per second.
@@ -826,8 +821,6 @@ while running:
             except KeyError:
                 print "Disp_Help key error."
 
-        # Refresh the weather data once per minute.
-        if ( int(s) == 0 ): myDisp.UpdateWeather()
 
     ( inDaylight, dayHrs, dayMins, tDaylight, tDarkness) = Daylight( myDisp.sunrise, myDisp.sunset )
 
