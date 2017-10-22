@@ -781,7 +781,14 @@ else:
     myDisp.UpdateWeather()
     schedule.every(data_refresh).minutes.do(myDisp.UpdateWeather)
 
-
+# Loads data from Google Calendar into class variables.
+if myDisp.UpdateCalendarEvents() == False:
+    print 'Startup Error: no data from Google Calendar.'
+    #running = False
+else:
+    # retreive WX data and set the update scheduler
+    myDisp.UpdateCalendarEvents()
+    schedule.every(data_refresh).minutes.do(myDisp.UpdateCalendarEvents)
 
 # Attach GPIO callback to our new button input on pin #4.
 #GPIO.add_event_detect( 4, GPIO.RISING, callback=btnNext, bouncetime=400)
