@@ -188,6 +188,9 @@ class SmDisplay:
         self.temps = [ ['',''], ['',''], ['',''], ['',''] ]
         self.sunrise = '7:00 AM'
         self.sunset = '8:00 PM'
+        self.eventsdate = [ '', '', '', '', '' ]
+        self.eventstime = [ '', '', '', '', '' ]
+        self.eventsdesc = [ '', '', '', '', '' ]
 
         """
         # Larger Display
