@@ -33,6 +33,7 @@ __version__ = "0.0.8"
 #   Lichee Zero Pi Google Calendar & Weather Display
 #    Created by: Jim Kemp    		11/15/2014
 #	 Modified by: Daniel Correas	10/10/2017
+#    Scheduling code portion by Steve Arnold, github.com/sarnold/pitft-weather-display
 #
 ###############################################################################
 import os
@@ -45,6 +46,7 @@ import calendar
 import pywapi
 import string
 from icon_defs import *
+import schedule 
 ## Localization dependencies
 import locale
 from strings_defs import *      # Strings file to manage multiple languages
@@ -694,6 +696,12 @@ dispTO = 0        # Display timeout to automatically switch back to weather disp
 if myDisp.UpdateWeather() == False:
     print 'Startup Error: no data from Weather.com.'
     #running = False
+else:
+    # retreive WX data and set the update scheduler
+    myDisp.UpdateWeather()
+    schedule.every(data_refresh).minutes.do(myDisp.UpdateWeather)
+
+
 
 # Attach GPIO callback to our new button input on pin #4.
 #GPIO.add_event_detect( 4, GPIO.RISING, callback=btnNext, bouncetime=400)
@@ -719,6 +727,8 @@ if 0: #GPIO.input( 17 ):
 #+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 while running:
 
+    # start data update and display scheduler
+    schedule.run_pending()
     # Debounce the shutdown switch. The main loop rnus at 100ms. So, if the 
     # button (well, a switch really) counter "btnShutdownCnt" counts above
     # 25 then the switch must have been on continuously for 2.5 seconds.
@@ -788,14 +798,14 @@ while running:
         if ( s != time.localtime().tm_sec ):
             s = time.localtime().tm_sec
             myDisp.disp_weather()    
-            #ser.write( "Weather\r\n" )
+
         # Once the screen is updated, we have a full second to get the weather.
         # Once per minute, update the weather from the net.
-        if ( s == 0 ):
-            try:
-                myDisp.UpdateWeather()
-            except:
-                print "Unhandled Error in UndateWeather."
+        #if ( s == 0 ):
+        #    try:
+        #        myDisp.UpdateWeather()
+        #    except:
+        #        print "Unhandled Error in UndateWeather."
 
     if ( mode == 'h'):
         # Pace the screen updates to once per second.
