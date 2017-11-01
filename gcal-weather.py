@@ -586,18 +586,14 @@ class SmDisplay:
         font = pygame.font.SysFont( fn, int(ymax*th), bold=1 )      # Regular Font
         sfont = pygame.font.SysFont( fn, int(ymax*sech), bold=1 )   # Small Font for Seconds
 
-        tm1 = time.strftime( "%a, %b %d   %H:%M", time.localtime() ).decode('utf-8').title()    # 1st part
-        tm2 = time.strftime( "%S", time.localtime() )            # 2nd
-        tm3 = "" #time.strftime( " %P", time.localtime() )            # 
+        tm1 = time.strftime( "%a, %b %d   %H:%M", time.localtime() ).decode('utf-8').title()    # Date
+        tm2 = time.strftime( "%S", time.localtime() )                                           # Time
 
         rtm1 = font.render( tm1, True, lc )
         (tx1,ty1) = rtm1.get_size()
         rtm2 = sfont.render( tm2, True, lc )
         (tx2,ty2) = rtm2.get_size()
-        rtm3 = font.render( tm3, True, lc )
-        (tx3,ty3) = rtm3.get_size()
 
-        tp = xmax / 2 - (tx1 + tx2 + tx3) / 2
         self.screen.blit( rtm1, (tp,self.tmdateYPos) )
         self.screen.blit( rtm2, (tp+tx1+3,self.tmdateYPosSm) )
         self.screen.blit( rtm3, (tp+tx1+tx2,self.tmdateYPos) )
@@ -655,21 +651,17 @@ class SmDisplay:
         font = pygame.font.SysFont( fn, int(ymax*thl), bold=1 )        # Regular Font
         sfont = pygame.font.SysFont( fn, int(ymax*sh), bold=1 )        # Small Font
 
-        tm1 = time.strftime( "%a, %b %d   %H:%M", time.localtime() ).decode('utf-8').title()    # 1st part
-        tm2 = time.strftime( "%S", time.localtime() )            # 2nd
-        tm3 = ""    #time.strftime( " %P", time.localtime() )            # 
+        tm1 = time.strftime( "%a, %b %d   %H:%M", time.localtime() ).decode('utf-8').title()    # Date
+        tm2 = time.strftime( "%S", time.localtime() )                                           # Time
 
         rtm1 = font.render( tm1, True, lc )
         (tx1,ty1) = rtm1.get_size()
         rtm2 = sfont.render( tm2, True, lc )
         (tx2,ty2) = rtm2.get_size()
-        rtm3 = font.render( tm3, True, lc )
-        (tx3,ty3) = rtm3.get_size()
 
-        tp = xmax / 2 - (tx1 + tx2 + tx3) / 2
-        self.screen.blit( rtm1, (tp,self.tmdateYPos) )
-        self.screen.blit( rtm2, (tp+tx1+3,self.tmdateYPosSm) )
-        self.screen.blit( rtm3, (tp+tx1+tx2,self.tmdateYPos) )
+        tp = xmax / 2 - (tx1 + tx2 ) / 2
+        self.screen.blit( rtm1, (tp,self.tmhelpYPos) )
+        self.screen.blit( rtm2, (tp+tx1+3,self.tmhelpYPosSm) )
 
         self.sPrint( gettext("Sunrise", lang) + ": %s" % self.sunrise, sfont, xmax*0.05, 3, lc )
         self.sPrint( gettext("Sunset",lang) + ": %s" % self.sunset, sfont, xmax*0.05, 4, lc )
