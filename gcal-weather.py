@@ -598,14 +598,12 @@ class SmDisplay:
         self.screen.blit( rtm2, (tp+tx1+3,self.tmdateYPosSm) )
         self.screen.blit( rtm3, (tp+tx1+tx2,self.tmdateYPos) )
 
-        # Conditions
+        # Conditions for Month Calendar
         ys = 0.20        # Yaxis Start Pos
-        xs = 0.20        # Xaxis Start Pos
-        gp = 0.075    # Line Spacing Gap
-        th = 0.05        # Text Height
+        xs = 0.15        # Xaxis Start Pos
+        gp = 0.10        # Line Spacing Gap
 
         cfont = pygame.font.SysFont( sfn, int(ymax*sh), bold=1 )
-        #cal = calendar.TextCalendar()
         yr = int( time.strftime( "%Y", time.localtime() ) )    # Get Year
         mn = int( time.strftime( "%m", time.localtime() ) )    # Get Month
         cal = calendar.month( yr, mn ).splitlines()
