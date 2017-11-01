@@ -217,9 +217,15 @@ class SmDisplay:
         self.tmdateDtTh = 0.075     # Date Text Height
         self.tmdateYPos = -3        # Time Y Position
         self.tmdateYPosSm = 12      # Date Y Position 
-        
-
-
+        self.tmhelpTh = 0.125
+        self.tmhelpSmTh = 0.075
+        self.tmhelpYPos = 1
+        self.tmhelpYPosSm = 6
+        self.tmcalendarTh = 0.125
+        self.tmcalendarSecTh = 0.075
+        self.tmcalendarSmTh = 0.10
+        self.tmcalendarYPos = 1
+        self.tmcalendarYPosSm = 6
 
 
     ####################################################################
@@ -574,10 +580,11 @@ class SmDisplay:
         pygame.draw.line( self.screen, lc, (xmin,ymax*0.15),(xmax,ymax*0.15), lines )
 
         # Time & Date
-        th = self.tmdateTh
-        sh = self.tmdateSmTh
-        font = pygame.font.SysFont( fn, int(ymax*th), bold=1 )        # Regular Font
-        sfont = pygame.font.SysFont( fn, int(ymax*sh), bold=1 )        # Small Font for Seconds
+        th = self.tmcalendarTh                                      # Date and Time Text height
+        sh = self.tmcalendarSmTh                                    # Month Calendar Text Height
+        sech = self.tmcalendarSecTh                                 # Seconds Text Height
+        font = pygame.font.SysFont( fn, int(ymax*th), bold=1 )      # Regular Font
+        sfont = pygame.font.SysFont( fn, int(ymax*sech), bold=1 )   # Small Font for Seconds
 
         tm1 = time.strftime( "%a, %b %d   %H:%M", time.localtime() ).decode('utf-8').title()    # 1st part
         tm2 = time.strftime( "%S", time.localtime() )            # 2nd
@@ -641,8 +648,8 @@ class SmDisplay:
         pygame.draw.line( self.screen, lc, (xmax,0),(xmax,ymax), lines )
         pygame.draw.line( self.screen, lc, (xmin,ymax*0.15),(xmax,ymax*0.15), lines )
 
-        thl = self.tmdateTh    # Large Text Height
-        sh = self.tmdateSmTh    # Small Text Height
+        thl = self.tmhelpTh         # Date and time text Height
+        sh = self.tmhelpSmTh        # Weather conditions text Height
 
         # Time & Date
         font = pygame.font.SysFont( fn, int(ymax*thl), bold=1 )        # Regular Font
