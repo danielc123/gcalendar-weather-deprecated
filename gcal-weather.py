@@ -594,9 +594,9 @@ class SmDisplay:
         rtm2 = sfont.render( tm2, True, lc )
         (tx2,ty2) = rtm2.get_size()
 
-        self.screen.blit( rtm1, (tp,self.tmdateYPos) )
-        self.screen.blit( rtm2, (tp+tx1+3,self.tmdateYPosSm) )
-        self.screen.blit( rtm3, (tp+tx1+tx2,self.tmdateYPos) )
+        tp = xmax / 2 - (tx1 + tx2 ) / 2                            # Screen centered
+        self.screen.blit( rtm1, (tp,self.tmcalendarYPos) )
+        self.screen.blit( rtm2, (tp+tx1+3,self.tmcalendarYPosSm) )
 
         # Conditions for Month Calendar
         ys = 0.20        # Yaxis Start Pos
