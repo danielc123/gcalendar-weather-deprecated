@@ -840,7 +840,7 @@ if 0: #GPIO.input( 17 ):
     (ix,iy) = icon.get_size()
     myDisp.screen.blit( icon, (800/2-ix/2,400/2-iy/2) )
     font = pygame.font.SysFont( "freesans", 40, bold=1 )
-    rf = font.render( "Please toggle shutdown siwtch.", True, (255,255,255) )
+    rf = font.render( "Please toggle shutdown switch.", True, (255,255,255) )
     (tx1,ty1) = rf.get_size()
     myDisp.screen.blit( rf, (800/2-tx1/2,iy+20) )
     pygame.display.update()
