@@ -904,7 +904,7 @@ while running:
     # Automatically switch back to weather display after a couple minutes.
     if mode != 'w':
         dispTO += 1
-        if dispTO > 3000:    # Five minute timeout at 100ms loop rate.
+        if dispTO > 300:    # About 30 seconds timeout at 100ms loop rate.
             mode = 'w'
     else:
         dispTO = 0
