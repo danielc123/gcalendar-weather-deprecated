@@ -66,7 +66,7 @@ except ImportError:
 # Setup GPIO pin BCM GPIO04
 import LPi.GPIO as GPIO
 GPIO.setmode( GPIO.BOARD )
-GPIO.setup( 6, GPIO.IN, pull_up_down=None )    # Next 
+GPIO.setup( 6, GPIO.IN )    # Next 
 # GPIO.setup( 17, GPIO.IN, pull_up_down=GPIO.PUD_DOWN )    # Shutdown
 
 mouseX, mouseY = 0, 0
@@ -831,6 +831,7 @@ else:
 #GPIO.add_event_detect( 6, GPIO.RISING, callback=btnNext, bouncetime=None)
 #GPIO.add_event_detect( 17, GPIO.RISING, callback=btnShutdown, bouncetime=100)
 btnShutdownCnt = 0
+btnNextCnt = 0    # Button counter
 
 if 0: #GPIO.input( 17 ):
     print "Warning: Shutdown Switch is Active!"
