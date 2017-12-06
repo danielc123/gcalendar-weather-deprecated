@@ -687,7 +687,11 @@ class SmDisplay:
         s = gettext("Barometer", lang) + ": %s %s" % (self.baro, baroUnits)
         self.sPrint( s, sfont, xmax*0.05, 10, lc )
 
-        s = gettext("Windspeed", lang)+  ": %.0f %s" % (float(self.wind_speed) * windScale, windSpeed)
+        s = gettext("Windspeed", lang) 
+        if 'calm' in self.wind_speed:
+            s =  s + ": 0 % s" % windSpeed
+        else:
+            s = s +  ": %.0f %s" % (float(self.wind_speed) * windScale, windSpeed)
         if self.gust != 'N/A': 
             s = s + '/' + self.gust
         if self.wind_speed != 'calm':
