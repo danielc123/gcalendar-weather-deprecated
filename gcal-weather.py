@@ -64,9 +64,9 @@ except ImportError:
 
 
 # Setup GPIO pin BCM GPIO04
-# import RPi.GPIO as GPIO
-# GPIO.setmode( GPIO.BCM )
-# GPIO.setup( 4, GPIO.IN, pull_up_down=GPIO.PUD_DOWN )    # Next 
+import LPi.GPIO as GPIO
+GPIO.setmode( GPIO.BOARD )
+GPIO.setup( 6, GPIO.IN, pull_up_down=None )    # Next 
 # GPIO.setup( 17, GPIO.IN, pull_up_down=GPIO.PUD_DOWN )    # Shutdown
 
 mouseX, mouseY = 0, 0
@@ -828,7 +828,7 @@ else:
     schedule.every(data_refresh).minutes.do(myDisp.UpdateCalendarEvents)
 
 # Attach GPIO callback to our new button input on pin #4.
-#GPIO.add_event_detect( 4, GPIO.RISING, callback=btnNext, bouncetime=400)
+#GPIO.add_event_detect( 6, GPIO.RISING, callback=btnNext, bouncetime=None)
 #GPIO.add_event_detect( 17, GPIO.RISING, callback=btnShutdown, bouncetime=100)
 btnShutdownCnt = 0
 
@@ -856,6 +856,14 @@ while running:
     # Debounce the shutdown switch. The main loop rnus at 100ms. So, if the 
     # button (well, a switch really) counter "btnShutdownCnt" counts above
     # 25 then the switch must have been on continuously for 2.5 seconds.
+    if GPIO.input (6):
+        btnNextCnt += 1
+        if btnNextCnt >= 1:
+            btnNextCnt = -5
+            btnNext(6)
+    else:
+        btnNextCnt = 0
+
     if 0: #GPIO.input( 17 ):
         btnShutdownCnt += 1
         if btnShutdownCnt > 25:
